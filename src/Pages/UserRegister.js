@@ -3,7 +3,7 @@ import "../Components/Styles/LoginNav.css"
 import "../Components/Styles/userRegistercss.css"
 import { useState } from 'react';
 import axios from "axios"
-
+import LoginNav from '../Components/LoginNav';
 
 
 
@@ -68,6 +68,8 @@ const handleregister =(e) =>{
 
   return (
    <>
+
+<LoginNav />
    
    <div className='registerform'>
    <form onSubmit={handleregister}>
