@@ -70,7 +70,8 @@ const handleregister =(e) =>{
    <>
 
 <LoginNav />
-   
+<h1 style={{marginLeft:"42%", color:"red"}}>User Register</h1>
+
    <div className='registerform'>
    <form onSubmit={handleregister}>
 

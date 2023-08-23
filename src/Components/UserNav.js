@@ -18,7 +18,7 @@ const userNav = () => {
 
     <div className='loginnav'>
    
-    <Link to="/featured" >  Featured </Link>
+    <Link to="/home" >  Home </Link>
     
       </div>
 
