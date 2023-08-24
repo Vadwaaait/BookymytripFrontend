@@ -30,11 +30,11 @@ const Hoteldetails = () => {
      <UserNav /> 
 
         <div className="deschotel">
-            <h1>{hotelinfoo.hotelName}</h1>
-            <h4>{hotelinfoo.hotelCity}</h4>
-            <h3>{hotelinfoo.hotelAddress}</h3>
-            <h3>{hotelinfoo.hotelPrice}</h3>
-            <h3>Hotel Description</h3>
+            <h2>Name : {hotelinfoo.hotelName}</h2>
+            <h4>city : {hotelinfoo.hotelCity}</h4>
+            <h4>HOTEL Address : {hotelinfoo.hotelAddress}</h4>
+            <h3 style={{color:"green"}}>Price : {hotelinfoo.hotelPrice}</h3>
+            <h4>Hotel Description</h4>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius ratione ullam corrupti non ea inventore ducimus rerum recusandae iste iure accusamus unde, commodi asperiores, error quasi nulla saepe eum sunt.</p>
             <h5>{hotelid}</h5>
             </div>

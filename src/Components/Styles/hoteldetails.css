@@ -1,1 +1,8 @@
-.deschotel {}
+.deschotel {
+    width: 90%;
+    margin: auto;
+    padding: 30px;
+    border: 1px solid black;
+    text-align: center;
+    border-radius: 20px;
+}
