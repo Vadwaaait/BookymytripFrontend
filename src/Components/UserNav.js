@@ -29,7 +29,7 @@ const userNav = () => {
       <Link to="/allHotels">All Hotels</Link>
       </div>
    <div className='loginnav'>
-      <Link to="/AdminRegister">Search Hotels</Link>
+      <Link to="/home">Logout</Link>
     
       </div>
 

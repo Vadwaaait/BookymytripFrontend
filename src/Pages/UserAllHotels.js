@@ -38,11 +38,13 @@ const UserAllHotels = () => {
            
         }
 
-
+        // componentDidMount and componentDidYpdate combination hook
         useEffect(()=>{
             fetchdata();
         },[])
 
+
+        //cookie to handle state
         let hid;
         const handleee=(event)=>{
            
@@ -56,8 +58,11 @@ const UserAllHotels = () => {
        <>
 
         <UserNav/>
-       
-        <ul>
+
+
+       {/* style to remove bullets */}
+
+        <ul style={{listStyleType:"none"}}>
             {
                 hotelinfo.map((item,i)=>{
                     return (
@@ -70,7 +75,7 @@ const UserAllHotels = () => {
                         <h4 style={{color:"green"}}>Price : ₹ {item.hotelPrice}</h4>
                         
                         <form onSubmit={handlehotelDetailsPage}>
-                            <button type='submit' value={item.hotelId} onClick={handleee}>View Details</button>
+                            <button type='submit' value={item.hotelId} onClick={handleee} style={{color:"white", backgroundColor:"black", padding:"5px", borderRadius:"20px"}}>View Details</button>
                         </form>
                         </li>
                         </div>

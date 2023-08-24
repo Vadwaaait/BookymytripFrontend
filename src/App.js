@@ -10,6 +10,9 @@ import AdminLogin from './Pages/AdminLogin';
 import AdminSignUp from './Pages/AdminSignUp';
 import HomePage from './Pages/HomePage';
 import Hoteldetails from './Pages/Hoteldetails';
+import Bookhotelpage from './Pages/Bookhotelpage';
+
+
 
 function App() {
   return (
@@ -25,9 +28,9 @@ function App() {
         <Route path='/UserHome' element={<UserHome/>} />  
         <Route path='/allHotels' element={<UserAllHotels/>} /> 
         <Route path='/home' element={<HomePage/>} /> 
-           
-         <Route path='/hoteldetailspage' element={<Hoteldetails/>} /> 
         
+         <Route path='/hoteldetailspage' element={<Hoteldetails/>} /> 
+         <Route path='/bookhotelpage' element={<Bookhotelpage/>} />
       </Routes>
 
 
