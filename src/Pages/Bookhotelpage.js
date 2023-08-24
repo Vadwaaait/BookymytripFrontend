@@ -3,6 +3,7 @@ import UserNav from '../Components/UserNav'
 import Cookies from 'js-cookie';
 import "../Components/Styles/bookingcard.css"
 import "../Components/Styles/Bookselectionform.css"
+import axios from 'axios';
 
 const Bookhotelpage = () => {
 
@@ -86,21 +87,9 @@ const Bookhotelpage = () => {
         
       }
 
-     const handlecheckout =()=>{
+     
 
-      console.log(noofpeople)
-
-     }
-
-     const submitcheckout=(event)=>{
-        event.preventDefault()
-        console.log("*********************************************************")
-        console.log(fromdate)
-        console.log(todate)
-        console.log(noofdays)
-        console.log(amount)
-        console.log()
-     }
+    
 
      useEffect(()=>{
       var date1=new Date(fromdate);
@@ -143,6 +132,55 @@ const Bookhotelpage = () => {
       
 
      }
+
+     //axios to save all the data in booking entity table in DB*****************************************************************
+
+
+     const handlecheckout =()=>{
+
+      console.log(noofpeople)
+
+     }
+
+
+     const submitcheckout=(event)=>{
+      event.preventDefault()
+      console.log("*********************************************************")
+      console.log(fromdate)
+      console.log(todate)
+      console.log(noofdays)
+      console.log(amount)
+      console.log()
+
+
+      axios.post("http://localhost:8080/api/user/makeBooking",{
+
+      userId:1,
+      hotelid:hotelinfor,
+      noOfDays:noofdays,
+      amountPaid:amount,
+      fromDate:fromdate,
+      toDate:todate
+
+      }).then((res)=>{
+
+        console.log(res)
+        if(res.status==200)
+        {
+          alert("booking Confirmed")
+        }
+        else
+        {
+          alert("Error , Booking Failed")
+        }
+
+      }).catch((err)=>{
+        alert("Error , Booking Failed")
+      })
+
+   }
+
+
 
   return (
     <>
