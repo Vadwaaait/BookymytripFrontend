@@ -27,17 +27,30 @@ const Bookhotelpage = () => {
 
       useEffect(()=>{
         fetchdata();
+        
+                 let pric=hotelinfoo.hotelPrice
+                 setamount(pric)
+                 setnoofrooms(1)
 
       },[])
 
       //-------------------------------------------------------------------------------------------------
       //Bookselecctionform logic
 
-        let pric=hotelinfoo.hotelPrice
+      let pric=hotelinfoo.hotelPrice
       const[noofrooms,setnoofrooms]=useState(1);
       const[amount,setamount]=useState(pric)
       const[noofpeople,setnoofpeople]=useState(1)
-      
+      const[fromdate,setfromdate]=useState();
+      const[todate,settodate]=useState();
+      const[noofdays,setnoofdays]=useState(0);
+      const[mindate, setmindate]=useState();
+      const[minfromDate, setminfromDate]=useState();
+
+      const setamt=()=>{
+        setamount(pric)
+      }
+
       const handlepeop=(event)=>{
         setnoofpeople(event.target.value)
       }
@@ -50,6 +63,27 @@ const Bookhotelpage = () => {
       }
 
       
+      const handlefromdate=(event)=>{
+
+        setfromdate(event.target.value)
+        
+        var mind=new Date(fromdate);
+        mind.setDate(mind.getDate()+1)
+       
+        setmindate(mind)
+
+        
+      } 
+
+
+
+      const handletodate=(event)=>{
+        settodate(event.target.value)
+
+        
+        
+      }
+
      const handlecheckout =()=>{
 
       console.log(noofpeople)
@@ -57,7 +91,52 @@ const Bookhotelpage = () => {
      }
 
      const submitcheckout=(event)=>{
+        event.preventDefault()
+        console.log("*********************************************************")
+        console.log(fromdate)
+        console.log(todate)
+        console.log(noofdays)
+        console.log(amount)
+        console.log()
+     }
 
+     useEffect(()=>{
+      var date1=new Date(fromdate);
+      var date2=new Date(todate);
+
+      var differenceInTime= date2-date1;
+
+      var differenceInDays=differenceInTime/(1000*3600*24)
+
+      // console.log("diff in days"+differenceInDays)
+
+      // console.log(fromdate +"ignore")
+      // console.log(todate +"ignore")
+     
+
+      console.log("asfassfdsdf"+ mindate)
+      setnoofdays(differenceInDays)
+     },[fromdate,todate,mindate])
+
+
+
+     useEffect(()=>{
+      
+      var Date1= new Date();
+      Date1.setDate(Date1.getDate()+1)
+      console.log(Date1)
+      setmindate(Date1)
+      setnoofdays(1)
+      setnoofrooms(1)
+      setnoofpeople(1)
+      setamount(hotelinfoo.hotelPrice)
+
+     },[])
+
+
+
+     const handleclickcheck=()=>{
+      setamount(pric*noofdays)
      }
 
   return (
@@ -125,7 +204,7 @@ const Bookhotelpage = () => {
                     <td>From Date</td>
                     <td>:</td>
                     <td>
-                        <input type="date" style={{borderRadius:"20px"}} required="required"/>
+                        <input type="date" style={{borderRadius:"20px"}} required="required" onChange={handlefromdate} min={minfromDate}/>
                     </td>
                   </tr>
 
@@ -133,19 +212,20 @@ const Bookhotelpage = () => {
                     <td>To Date</td>
                     <td>:</td>
                     <td>
-                        <input type="date" style={{borderRadius:"20px"}} required="required"/>
+                        <input type="date" style={{borderRadius:"20px"}} required="required" onChange={handletodate} defaultValue={fromdate} min={mindate}/>
                     </td>
                   </tr>
 
             </table>
-
-
+                  <br />
+                  <br />
+              <input type="checkbox" name="" id="" required="required" onClick={handleclickcheck}/> <small>click here to agree</small>
             <hr />
         <hr />
 
 
         <h3>Total  Amount to be paid</h3>
-        <h4 style={{color:"green"}}>₹ {amount}</h4>
+        <h4 style={{color:"green"}} onLoad={setamt}>₹ {amount}</h4>
 
         
           <button style={{color:"white", backgroundColor:"black", padding:"5px", borderRadius:"20px"}} onClick={handlecheckout}>checkout</button>
@@ -155,7 +235,7 @@ const Bookhotelpage = () => {
             
         </div>
 
-
+       <h1>Diff in days is {noofdays}</h1>
         
        
 
