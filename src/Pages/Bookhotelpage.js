@@ -46,6 +46,8 @@ const Bookhotelpage = () => {
       const[noofdays,setnoofdays]=useState(0);
       const[mindate, setmindate]=useState();
       const[minfromDate, setminfromDate]=useState();
+      const[check,setcheck]=useState(false)
+
 
       const setamt=()=>{
         setamount(pric)
@@ -135,8 +137,11 @@ const Bookhotelpage = () => {
 
 
 
-     const handleclickcheck=()=>{
-      setamount(pric*noofdays)
+     const handleclickcheck=(event)=>{
+      setamount(pric*noofdays*noofrooms);
+
+      
+
      }
 
   return (
@@ -183,7 +188,7 @@ const Bookhotelpage = () => {
                 <td>Number of Rooms</td>
                 <td>:</td>
                 <td>
-                <input type="number" name="roomsno" id=""  max={5} min={1} defaultValue={1} onChange={roomshandle} style={{width:"100%", textAlign:"center", borderRadius:"20px"} } required="required"/>
+                <input type="number" name="roomsno" id=""  max={5} min={1} defaultValue={1} onChange={roomshandle} style={{width:"100%", textAlign:"center", borderRadius:"20px"} } required="required" disabled={check}/>
                   </td>
               </tr>
               <tr>
@@ -197,14 +202,14 @@ const Bookhotelpage = () => {
                   <td>:</td>
                   <td>
                     {/* max no of rooms * 2 people can book the hotel; */}
-                  <input type="number" name="peopleno" onChange={handlepeop} id="" max={parseInt(noofrooms)*2} min={1} defaultValue={1} style={{width:"100%", textAlign:"center",borderRadius:"20px"}} required="required" />
+                  <input type="number" name="peopleno" onChange={handlepeop} disabled={check} id="" max={parseInt(noofrooms)*2} min={1} defaultValue={1} style={{width:"100%", textAlign:"center",borderRadius:"20px"}} required="required" />
                   </td>
                 </tr>
                   <tr>
                     <td>From Date</td>
                     <td>:</td>
                     <td>
-                        <input type="date" style={{borderRadius:"20px"}} required="required" onChange={handlefromdate} min={minfromDate}/>
+                        <input type="date" style={{borderRadius:"20px"}} required="required" onChange={handlefromdate} min={minfromDate} disabled={check}/>
                     </td>
                   </tr>
 
@@ -212,14 +217,14 @@ const Bookhotelpage = () => {
                     <td>To Date</td>
                     <td>:</td>
                     <td>
-                        <input type="date" style={{borderRadius:"20px"}} required="required" onChange={handletodate} defaultValue={fromdate} min={mindate}/>
+                        <input type="date" style={{borderRadius:"20px"}} required="required" onChange={handletodate} defaultValue={fromdate} min={fromdate} disabled={check}/>
                     </td>
                   </tr>
 
             </table>
                   <br />
                   <br />
-              <input type="checkbox" name="" id="" required="required" onClick={handleclickcheck}/> <small>click here to agree</small>
+              <input type="checkbox" name="" id="" required="required" onClick={handleclickcheck} onChange={()=>{setcheck(!check)}} /> <small>click here to agree</small>
             <hr />
         <hr />
 
@@ -228,14 +233,14 @@ const Bookhotelpage = () => {
         <h4 style={{color:"green"}} onLoad={setamt}>₹ {amount}</h4>
 
         
-          <button style={{color:"white", backgroundColor:"black", padding:"5px", borderRadius:"20px"}} onClick={handlecheckout}>checkout</button>
+          <button style={{color:"white", backgroundColor:"black", padding:"5px", borderRadius:"20px"}} onClick={handlecheckout} >checkout</button>
 
           </form>
 
             
         </div>
 
-       <h1>Diff in days is {noofdays}</h1>
+       <h5>Number of days : {noofdays}</h5>
         
        
 
