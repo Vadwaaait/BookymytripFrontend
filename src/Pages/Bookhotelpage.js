@@ -179,7 +179,16 @@ const Bookhotelpage = () => {
       fromDate:fromdate,
       toDate:todate
 
-      }).then((res)=>{
+      }
+      ,{headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS"
+      },
+          auth: {
+        username: 'pogo1@pogo.com',
+         password: 'pogo' 
+  }})
+  .then((res)=>{
 
         console.log(res)
         if(res.status==200)
