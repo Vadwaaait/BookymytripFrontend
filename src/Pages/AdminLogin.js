@@ -6,6 +6,8 @@ const AdminLogin = () => {
   return (
    <>
     <LoginNav/>
+    <h1 style={{textAlign:"center", color:"red"}}>Admin Login</h1>
+        <hr />
    </>
   )
 }

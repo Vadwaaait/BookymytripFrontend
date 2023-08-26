@@ -10,7 +10,22 @@ import Cookies from 'js-cookie';
 
 const UserAllHotels = () => {
 
+    // headers.set('Authorization', 'Basic ' + base64.encode("pogo1@pogo.com" + ":" + "pogo"));
 
+
+    const session_url = 'http://localhost:8080/api/getAllHotels';
+
+    const username = 'pogo1@pogo.com';
+    
+    const password = 'pogo';
+
+    const credentials = btoa('pogo1@pogo.com:pogo');
+
+    let headers = new Headers();
+    let authString = `${username}:${password}`
+    headers.set('Authorization', 'Basic ' + btoa(authString))
+
+   
 
     const navigate=useNavigate();
 
@@ -31,12 +46,50 @@ const UserAllHotels = () => {
 
 
 
-        const fetchdata =()=>{
-            fetch("http://localhost:8080/api/getAllHotels").then(resp=>resp.json()).then(resp=> {console.log(resp);
-             sethotelinfo(resp)})
+        // const fetchdata =()=>{
+        //     fetch("http://localhost:8080/api/getAllHotels").then(resp=>resp.json()).then(resp=> {console.log(resp);
+        //      sethotelinfo(resp)})
             
            
-        }
+        // }
+
+       
+
+        // const fetchdata =()=>{
+        //     fetch("http://localhost:8080/api/getAllHotels", { headers: {Authorization : `Basic ${credentials}` } , mode:'no-cors'})
+        //       .then(resp=>resp.json()).then(resp=> {console.log(resp);
+        //              sethotelinfo(resp)})
+        //       .catch(err=>console.log(err.message+" sed"))
+
+           
+        //  }
+
+         const fetchdata =()=>{
+            const err =  axios.
+            get('http://localhost:8080/api/getAllHotels', {
+                headers: {
+                    "Access-Control-Allow-Origin": "*",
+                    "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS"
+                  },
+              auth: {
+                username: 'pogo1@pogo.com',
+                password: 'pogo' 
+              }
+             
+            }).then(res=>{console.log(res);
+            sethotelinfo(res.data);
+
+
+            }).catch(err=>console.log(err))
+
+
+    
+
+           
+         }
+
+
+
 
         // componentDidMount and componentDidYpdate combination hook
         useEffect(()=>{
@@ -52,6 +105,8 @@ const UserAllHotels = () => {
           console.log(event.target.value);
           hid=event.target.value
           Cookies.set('hotelidd', hid, { expires: 7 });
+
+
         }
 
   return (

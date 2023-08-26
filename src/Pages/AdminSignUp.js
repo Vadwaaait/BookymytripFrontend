@@ -40,8 +40,8 @@ const AdminSignUp = () => {
     <>
         <LoginNav/>
 
-        <h1 style={{marginLeft:"40%", color:"red"}}>Admin Register</h1>
-
+        <h1 style={{textAlign:"center", color:"red"}}>Admin Register</h1>
+        <hr />
         <div className='registerform'>
    <form onSubmit={handleAdminreg}>
 

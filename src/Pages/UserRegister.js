@@ -70,12 +70,12 @@ const handleregister =(e) =>{
    <>
 
 <LoginNav />
-<h1 style={{marginLeft:"42%", color:"red"}}>User Register</h1>
-
+<h1 style={{ color:"red" , textAlign:"center"}}>User Register</h1>
+<hr />
    <div className='registerform'>
    <form onSubmit={handleregister}>
 
-      <table className='registertable'>
+      <table className='registertable' >
 
       <tr>
         <td>
