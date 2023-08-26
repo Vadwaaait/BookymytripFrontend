@@ -32,7 +32,15 @@ const handleregister =(e) =>{
   userName:uname,
   userEmail:umail,
   userPassword:upass
-  }).then((response)=>{
+  },
+  {headers: {
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS"
+  },
+      auth: {
+    username: 'pogo1@pogo.com',
+     password: 'pogo' 
+}}).then((response)=>{
 
     console.log(response)
 

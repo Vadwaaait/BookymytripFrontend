@@ -7,7 +7,7 @@ const AdminSignUp = () => {
 
         const[aname,setAname]=useState("");
         const[Amail,setAmail]=useState("");
-        const[apass,setupass]=useState("");
+        const[apass,setapass]=useState("");
 
 
         const handleAdminreg=()=>{
@@ -19,13 +19,21 @@ const AdminSignUp = () => {
             adminName:aname,
             adminEmail:Amail,
             adminPassword:apass
-  }).then((res)=>{
+  },
+  {headers: {
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS"
+  },
+      auth: {
+    username: 'pogo1@pogo.com',
+     password: 'pogo' 
+}}).then((res)=>{
 
     console.log(res)
 
     if(res.status===200 && res.data != "Some error has occured")
     {
-      alert("user added successfully")
+      alert("Admin added successfully")
     }
     else{
 
@@ -76,7 +84,7 @@ const AdminSignUp = () => {
         </td>
         <td>:</td>
         <td>
-          <input type="password" required="required" name="pass" value={apass || "" }    onChange={e=>setupass(e.target.value)}/>
+          <input type="password" required="required" name="pass" value={apass || "" }    onChange={e=>setapass(e.target.value)}/>
 
         </td>
       </tr>
