@@ -76,7 +76,7 @@ const UserAllHotels = () => {
                   },
               auth: {
                 username: username,
-                password: username 
+                password: password 
               }
              
             }).then(res=>{console.log(res.data);
