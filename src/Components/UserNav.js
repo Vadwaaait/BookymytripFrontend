@@ -5,6 +5,15 @@ import { Button } from 'bootstrap';
 import "../images/logo.png"
 
 const userNav = () => {
+
+  
+
+    const handlelogout=()=>{
+
+
+    }
+
+
   return (
     <>
       
@@ -29,7 +38,7 @@ const userNav = () => {
       <Link to="/allHotels">All Hotels</Link>
       </div>
    <div className='loginnav'>
-      <Link to="/home">Logout</Link>
+      <Link to="/" onClick={handlelogout}>Logout</Link>
     
       </div>
 

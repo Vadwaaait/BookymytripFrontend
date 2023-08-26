@@ -41,3 +41,9 @@ a:hover {
     width: 180px;
     height: 180px;
 }
+
+.indexformstyle {
+    border: 1px solid rgb(227, 151, 151);
+    padding: 40px;
+    border-radius: 20px;
+}

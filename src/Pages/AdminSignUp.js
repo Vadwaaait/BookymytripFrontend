@@ -51,7 +51,7 @@ const AdminSignUp = () => {
         <h1 style={{textAlign:"center", color:"red"}}>Admin Register</h1>
         <hr />
         <div className='registerform'>
-   <form onSubmit={handleAdminreg}>
+   <form onSubmit={handleAdminreg} className='indexformstyle'>
 
       <table className='registertable'>
 
@@ -96,7 +96,7 @@ const AdminSignUp = () => {
         </td>
         <td></td>
         <td>
-          <input type="submit" />
+          <input type="submit" style={{color:"white" , backgroundColor:"black" , borderRadius:"20px" , padding:"5px"}}/>
         </td>
       </tr>
 

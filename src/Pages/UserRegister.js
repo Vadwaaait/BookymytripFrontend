@@ -81,7 +81,7 @@ const handleregister =(e) =>{
 <h1 style={{ color:"red" , textAlign:"center"}}>User Register</h1>
 <hr />
    <div className='registerform'>
-   <form onSubmit={handleregister}>
+   <form onSubmit={handleregister} className='indexformstyle'>
 
       <table className='registertable' >
 
@@ -126,7 +126,7 @@ const handleregister =(e) =>{
         </td>
         <td></td>
         <td>
-          <input type="submit" />
+          <input type="submit" style={{color:"white" , backgroundColor:"black" , borderRadius:"20px" , padding:"5px"}}/>
         </td>
       </tr>
 
