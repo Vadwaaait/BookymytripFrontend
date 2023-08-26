@@ -76,7 +76,7 @@ const UserAllHotels = () => {
                 password: 'pogo' 
               }
              
-            }).then(res=>{console.log(res);
+            }).then(res=>{console.log(res.data);
             sethotelinfo(res.data);
 
 

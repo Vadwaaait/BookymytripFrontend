@@ -19,13 +19,30 @@ const Bookhotelpage = () => {
     //js-cookies
     let hotelinfor=Cookies.get('hotelidd');
 
-    const fetchdata=()=>{
+        //"http://localhost:8080/api/user/hotel/id/"+hotelinfor
 
-        fetch("http://localhost:8080/api/user/hotel/id/"+hotelinfor).then(resp=>resp.json()).then(resp=> {console.log(resp);
-                 sethotelinfoo(resp)});
-            
+
+        const fetchdata =()=>{
+    
+          const err =  axios.
+          get("http://localhost:8080/api/user/hotel/id/"+hotelinfor, {
+              headers: {
+                  "Access-Control-Allow-Origin": "*",
+                  "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS"
+                },
+            auth: {
+              username: 'pogo1@pogo.com',
+              password: 'pogo' 
             }
-
+           
+          }).then(res=>{console.log(res.data);
+            sethotelinfoo(res.data);
+      
+      
+          }).catch(err=>console.log(err))
+         
+       }
+      
       useEffect(()=>{
         fetchdata();
         
