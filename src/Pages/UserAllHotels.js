@@ -15,9 +15,12 @@ const UserAllHotels = () => {
 
     const session_url = 'http://localhost:8080/api/getAllHotels';
 
-    const username = 'pogo1@pogo.com';
-    
-    const password = 'pogo';
+
+    //Cookies
+    const username=Cookies.get("username")
+    const password=Cookies.get("password")
+    const myname=Cookies.get("myname")
+    const myid=Cookies.get("myid")
 
     const credentials = btoa('pogo1@pogo.com:pogo');
 
@@ -72,8 +75,8 @@ const UserAllHotels = () => {
                     "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS"
                   },
               auth: {
-                username: 'pogo1@pogo.com',
-                password: 'pogo' 
+                username: username,
+                password: username 
               }
              
             }).then(res=>{console.log(res.data);

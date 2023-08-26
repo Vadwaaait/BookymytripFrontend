@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import LoginNav from '../Components/LoginNav'
 import Cookies from 'js-cookie';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const UserLogin = () => {
 
@@ -10,6 +11,7 @@ const UserLogin = () => {
   const [upass,setUpass] = useState("");
 
 
+    const navigate = useNavigate();
 
   const handleLoginClick=(event)=>{
 
@@ -34,10 +36,17 @@ const UserLogin = () => {
      
          if(response.status===200 )
          {
-           alert("successfull")
+            
+          Cookies.set('username' , umail , {expires:7});
+          Cookies.set('password' , upass , {expires:7});
+          Cookies.set('myname' , response.data.userName , {expires:7});
+          Cookies.set('muid' , response.data.userId , {expires:7});
+
+          
+           navigate("/home")
          }
          
-       }).catch(err => alert("Error, No Such Username or Password"))
+       }).catch(err => alert("❌ Error, No Such Username or Password"))
 
 
      
@@ -60,11 +69,11 @@ const UserLogin = () => {
 
       <tr>
         <td>
-          Email Id 
+          Username
         </td>
         <td>:</td>
         <td>
-          <input type="email" name="mailid" required="required"  value={umail || ""}    onChange={e=>setUmail(e.target.value)}/>
+          <input type="email" name="mailid" required="required" placeholder='abc@gmail.com'  value={umail || ""}    onChange={e=>setUmail(e.target.value)}/>
 
         </td>
       </tr>
@@ -76,7 +85,7 @@ const UserLogin = () => {
         </td>
         <td>:</td>
         <td>
-          <input type="password" required="required" name="pass" value={upass || "" }    onChange={e=>setUpass(e.target.value)}/>
+          <input type="password" required="required" name="pass"  value={upass || "" }    onChange={e=>setUpass(e.target.value)}/>
 
         </td>
       </tr>

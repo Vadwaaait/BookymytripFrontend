@@ -12,6 +12,11 @@ const Hoteldetails = () => {
 
   const hotelid=Cookies.get('hotelidd');
 
+  const username=Cookies.get("username")
+    const password=Cookies.get("password")
+    const myname=Cookies.get("myname")
+    const myid=Cookies.get("myid")
+
 
 
 
@@ -26,8 +31,8 @@ const Hoteldetails = () => {
             "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS"
           },
       auth: {
-        username: 'pogo1@pogo.com',
-        password: 'pogo' 
+        username: username,
+        password: password 
       }
      
     }).then(res=>{console.log(res.data);

@@ -1,15 +1,24 @@
 import React from 'react'
-import {  Link  } from "react-router-dom";
+import {  Link, useNavigate  } from "react-router-dom";
 import "../Components/Styles/LoginNav.css"
 import { Button } from 'bootstrap';
 import "../images/logo.png"
+import Cookies from 'js-cookie';
 
-const userNav = () => {
 
-  
+const UserNav = () => {
+
+    
+    const navigate =useNavigate();
 
     const handlelogout=()=>{
-
+      
+      Cookies.set("username","")
+      Cookies.set("password","")
+      Cookies.set("myname","")
+      Cookies.set("myid","")
+     
+     navigate("/")
 
     }
 
@@ -51,4 +60,4 @@ const userNav = () => {
   )
 }
 
-export default userNav
+export default UserNav
