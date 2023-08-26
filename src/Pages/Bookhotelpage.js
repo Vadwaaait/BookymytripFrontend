@@ -181,8 +181,10 @@ const Bookhotelpage = () => {
 
       }
       ,{headers: {
+
         "Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS"
+      
       },
           auth: {
         username: 'pogo1@pogo.com',

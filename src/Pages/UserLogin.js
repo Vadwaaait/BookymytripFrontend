@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import LoginNav from '../Components/LoginNav'
+import Cookies from 'js-cookie';
+import axios from 'axios';
 
 const UserLogin = () => {
 
@@ -7,6 +9,40 @@ const UserLogin = () => {
   const [umail,setUmail] = useState("");
   const [upass,setUpass] = useState("");
 
+
+
+  const handleLoginClick=(event)=>{
+
+       event.preventDefault();
+
+       axios.post("http://localhost:8080/api/user/login",{
+
+       
+       userEmail:umail,
+       userPassword:upass
+       },
+       {headers: {
+         "Access-Control-Allow-Origin": "*",
+         "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS"
+       },
+           auth: {
+         username: umail,
+          password: upass 
+     }}).then((response)=>{
+     
+         console.log(response)
+     
+         if(response.status===200 )
+         {
+           alert("successfull")
+         }
+         
+       }).catch(err => alert("Error, No Such Username or Password"))
+
+
+     
+          
+  }
 
 
   return (
@@ -52,7 +88,7 @@ const UserLogin = () => {
         </td>
         <td></td>
         <td>
-          <input type="submit" style={{color:"white" , backgroundColor:"black" , borderRadius:"20px" , padding:"5px"}}/>
+          <input type="submit"  onClick={handleLoginClick} style={{color:"white" , backgroundColor:"black" , borderRadius:"20px" , padding:"5px"}}/>
         </td>
       </tr>
 
