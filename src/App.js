@@ -12,7 +12,7 @@ import HomePage from './Pages/HomePage';
 import Hoteldetails from './Pages/Hoteldetails';
 import Bookhotelpage from './Pages/Bookhotelpage';
 import BynameSearch from './Pages/BynameSearch';
-
+import HotelCitySearch from './Pages/HotelCitySearch';
 
 function App() {
   return (
@@ -31,8 +31,10 @@ function App() {
         
          <Route path='/hoteldetailspage' element={<Hoteldetails/>} /> 
          <Route path='/bookhotelpage' element={<Bookhotelpage/>} />
-
+         
          <Route path='/bynamesearch' element={<BynameSearch/>} /> 
+
+         <Route path='/HotelCitySearch' element={<HotelCitySearch/>} />
       </Routes>
 
 
