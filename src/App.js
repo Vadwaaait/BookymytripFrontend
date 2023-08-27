@@ -13,6 +13,7 @@ import Hoteldetails from './Pages/Hoteldetails';
 import Bookhotelpage from './Pages/Bookhotelpage';
 import BynameSearch from './Pages/BynameSearch';
 import HotelCitySearch from './Pages/HotelCitySearch';
+import MyBookings from './Pages/MyBookings';
 
 function App() {
   return (
@@ -31,7 +32,7 @@ function App() {
         
          <Route path='/hoteldetailspage' element={<Hoteldetails/>} /> 
          <Route path='/bookhotelpage' element={<Bookhotelpage/>} />
-         
+         <Route path='/myBooking' element={<MyBookings/>} /> 
          <Route path='/bynamesearch' element={<BynameSearch/>} /> 
 
          <Route path='/HotelCitySearch' element={<HotelCitySearch/>} />

@@ -190,7 +190,8 @@ const Bookhotelpage = () => {
       noOfDays:noofdays,
       amountPaid:amount,
       fromDate:fromdate,
-      toDate:todate
+      toDate:todate,
+      noroomsbooked:noofrooms
 
       }
       ,{headers: {
