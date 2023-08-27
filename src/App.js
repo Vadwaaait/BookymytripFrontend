@@ -11,7 +11,7 @@ import AdminSignUp from './Pages/AdminSignUp';
 import HomePage from './Pages/HomePage';
 import Hoteldetails from './Pages/Hoteldetails';
 import Bookhotelpage from './Pages/Bookhotelpage';
-
+import BynameSearch from './Pages/BynameSearch';
 
 
 function App() {
@@ -31,6 +31,8 @@ function App() {
         
          <Route path='/hoteldetailspage' element={<Hoteldetails/>} /> 
          <Route path='/bookhotelpage' element={<Bookhotelpage/>} />
+
+         <Route path='/bynamesearch' element={<BynameSearch/>} /> 
       </Routes>
 
 

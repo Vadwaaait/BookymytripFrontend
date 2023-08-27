@@ -5,7 +5,7 @@ import HotelShowCard from '../Components/HotelShowCard';
 import { keyboard } from '@testing-library/user-event/dist/keyboard';
 import "../Components/Styles/hotelcardStyle.css"
 import { Link, useNavigate } from 'react-router-dom';
-import { CookiesProvider, useCookies } from "react-cookie";
+
 import Cookies from 'js-cookie';
 
 const UserAllHotels = () => {

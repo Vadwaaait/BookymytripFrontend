@@ -9,6 +9,8 @@ import Cookies from 'js-cookie';
 const UserNav = () => {
 
     
+    const myname = Cookies.get("myname")
+
     const navigate =useNavigate();
 
     const handlelogout=()=>{
@@ -27,8 +29,12 @@ const UserNav = () => {
     <>
       
     <div className='mylognav'>
+        
+        
     <div className='loginnavlog'>
+
       <div className="navlogo">
+
      <h4 style={{color:"red"}}>BookMyTrip
     </h4>
            </div>
@@ -55,7 +61,8 @@ const UserNav = () => {
 
       </div>
       <hr />
-      
+      <h6>Hello, {myname}</h6>
+      <hr />
   </>
   )
 }

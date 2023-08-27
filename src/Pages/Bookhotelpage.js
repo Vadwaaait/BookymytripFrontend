@@ -4,6 +4,7 @@ import Cookies from 'js-cookie';
 import "../Components/Styles/bookingcard.css"
 import "../Components/Styles/Bookselectionform.css"
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const Bookhotelpage = () => {
 
@@ -162,9 +163,18 @@ const Bookhotelpage = () => {
 
      }
 
+     const navigate=useNavigate()
 
      const submitcheckout=(event)=>{
       event.preventDefault()
+
+      if(hotelinfor===null || hotelinfor=="")
+      {
+          alert("Fill up the details")
+          navigate("/home")
+
+      }
+      else{
       console.log("*********************************************************")
       console.log(fromdate)
       console.log(todate)
@@ -210,7 +220,7 @@ const Bookhotelpage = () => {
       })
 
    }
-
+  }
 
 
   return (

@@ -40,7 +40,7 @@ const UserLogin = () => {
           Cookies.set('username' , umail , {expires:7});
           Cookies.set('password' , upass , {expires:7});
           Cookies.set('myname' , response.data.userName , {expires:7});
-          Cookies.set('muid' , response.data.userId , {expires:7});
+          Cookies.set('myid' , response.data.userId , {expires:7});
 
           
            navigate("/home")
