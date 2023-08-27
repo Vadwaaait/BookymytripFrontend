@@ -15,12 +15,26 @@ const UserNav = () => {
 
     const handlelogout=()=>{
       
-      Cookies.set("username","")
-      Cookies.set("password","")
-      Cookies.set("myname","")
-      Cookies.set("myid","")
+      if (window.confirm(`${myname} are you sure you want to logout ?`)==true)
+      {
+        Cookies.set("username","")
+        Cookies.set("password","")
+        Cookies.set("myname","")
+        Cookies.set("myid","")
+       
+        alert("you have been logged out")
+       navigate("/")
+      } 
+      else{
+
+        alert("you are still logged in out")
+        navigate("/home")
+
+      }
      
-     navigate("/")
+     
+
+      
 
     }
 
@@ -52,16 +66,14 @@ const UserNav = () => {
      <div className='loginnav'>
       <Link to="/allHotels">All Hotels</Link>
       </div>
-   <div className='loginnav'>
-      <Link to="/" onClick={handlelogout}>Logout</Link>
-    
+  
+      <div className='loginnav'> 
+      <button style={{textDecoration:"none" , backgroundColor:"white" , border:"none"}}  onClick={handlelogout}>Logout</button>
       </div>
-
-      
 
       </div>
       <hr />
-      <h6>Hello, {myname}</h6>
+      <h6>Welcome, {myname}</h6>
       <hr />
   </>
   )
