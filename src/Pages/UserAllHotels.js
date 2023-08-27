@@ -96,6 +96,15 @@ const UserAllHotels = () => {
 
         // componentDidMount and componentDidYpdate combination hook
         useEffect(()=>{
+
+            if(username==="")
+            {
+      
+                navigate("/")
+                
+            }
+
+
             fetchdata();
         },[])
 
