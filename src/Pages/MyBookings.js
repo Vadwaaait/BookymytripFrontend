@@ -4,6 +4,8 @@ import axios from 'axios'
 import Cookies from 'js-cookie'
 import "../Components/Styles/hotelcardStyle.css"
 import { useNavigate } from 'react-router-dom'
+import jsPDF from "jspdf"
+
 const MyBookings = () => {
   
   
@@ -18,7 +20,7 @@ const MyBookings = () => {
 
             if(username==="")
             {
-      
+
                 navigate("/")
                 
             }
@@ -52,7 +54,28 @@ const MyBookings = () => {
 
                 {
 
+
                     bookings.map((item,i)=>{
+
+
+                        const DownloadPDF=(e)=>{
+                                e.preventDefault();
+                                
+                                const pdf=new jsPDF()
+
+                                pdf.text("BookMyTrip",90,10)
+                                pdf.text("---------------------------------------------------------------------------------------",20,20)
+                                pdf.text(`Booking ID :  ${bookings[i].bookingId}`,20,30)
+                                pdf.text(`From : ${bookings[i].fromDate}`,20,40)
+                                pdf.text(`To : ${bookings[i].toDate}`,20,50)
+                                pdf.text(`Hotel Name : ${bookings[i].hotelE.hotelName}`,20,60)
+                                pdf.text(`No of Days Booked : ${bookings[i].noOfDays}`,20,70)
+                                pdf.text(`No of Rooms Booked : ${bookings[i].noroomsbooked}`,20,80)
+                                pdf.text(`Booked By : ${bookings[i].userE.userName}`,20,90)
+                                pdf.text(`Total Amount Paid :  Rs.${bookings[i].amountPaid}`,20,100)
+                                pdf.save("bookmytrip.pdf")
+
+                        }
 
                         return(
                             <li key={i} >
@@ -68,8 +91,8 @@ const MyBookings = () => {
                                             <p>No of Rooms Booked : {bookings[i].noroomsbooked}</p>
                                             <p>Booked By : {bookings[i].userE.userName}</p>
                                             <h6 style={{color:"green"}}>Total Amount Paid :  ₹{bookings[i].amountPaid}</h6>
-
-                                            
+                                            <br />
+                                            <button style={{padding:"5px", borderRadius:"10px" , color:"white", backgroundColor:"black"}} onClick={DownloadPDF} >Download Reciept</button>
                                                
                                             
                             </div>
