@@ -229,10 +229,11 @@ const Bookhotelpage = () => {
 
     <UserNav />
     <div className="bookingcard">
-        <h1>Selected Hotel Details</h1>
+        <h1 style={{color:"rgb(231, 135, 135)"}}>Selected Hotel Details</h1>
+        <br />
         <hr />
         <table style={{margin:'auto'}}>
-          <tr>
+          <tr >
             <td><h2>Hotel</h2></td>
             <td><h2>:</h2></td>
             <td><h2>{hotelinfoo.hotelName}</h2></td>

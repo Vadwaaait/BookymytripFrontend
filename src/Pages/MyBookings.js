@@ -75,6 +75,8 @@ const MyBookings = () => {
                                 pdf.text(`Total Amount Paid :  Rs.${bookings[i].amountPaid}`,20,100)
                                 pdf.save("bookmytrip.pdf")
 
+                                
+
                         }
 
                         return(
@@ -92,7 +94,7 @@ const MyBookings = () => {
                                             <p>Booked By : {bookings[i].userE.userName}</p>
                                             <h6 style={{color:"green"}}>Total Amount Paid :  ₹{bookings[i].amountPaid}</h6>
                                             <br />
-                                            <button style={{padding:"5px", borderRadius:"10px" , color:"white", backgroundColor:"black"}} onClick={DownloadPDF} >Download Reciept</button>
+                                            <button style={{padding:"5px", borderRadius:"10px" , color:"white", backgroundColor:"black"}} onClick={DownloadPDF} >Download Receipt</button>
                                                
                                             
                             </div>

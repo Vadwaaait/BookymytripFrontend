@@ -136,11 +136,12 @@ const UserAllHotels = () => {
                         <div className='hotelcard'>
                     <li key={i} >
                         <h2>{item.hotelName}</h2>
+                        <hr />
                         <h4>City : {item.hotelCity}</h4>
                         <h5>Address :{item.hotelAddress}</h5>
                         <h5>Rooms available : {item.noOfRooms}</h5>
                         <h4 style={{color:"green"}}>Price : ₹ {item.hotelPrice}</h4>
-                        
+                        <hr />
                         <form onSubmit={handlehotelDetailsPage}>
                             <button type='submit' value={item.hotelId} onClick={handleee} style={{color:"white", backgroundColor:"black", padding:"5px", borderRadius:"20px"}}>View Details</button>
                         </form>

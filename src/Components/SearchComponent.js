@@ -28,7 +28,7 @@ const SearchComponent = (props) => {
                                 <td><select name="cars" id="cars" required="required" onClick={handlesearchby}>
                                           <option value="hotelnamesearch" defaultValue={"hotelnamesearch"}>Hotel Name</option>
                                           <option value="hotelcitysearch">City Name</option>
-                                          <option value="hotelidsearch">Hotel Id</option>
+                                        
                                           
                                     </select></td>
                                 
