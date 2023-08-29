@@ -165,8 +165,8 @@ const Bookhotelpage = () => {
 
      const navigate=useNavigate()
 
-     const submitcheckout=(event)=>{
-      event.preventDefault()
+     const submitcheckout=()=>{
+      
 
       if(hotelinfor===null || hotelinfor=="")
       {
@@ -226,9 +226,9 @@ const Bookhotelpage = () => {
 
   // stripe api -------------------------------------------------------------------
 
-  async function handleToken(token) {
+   function handleToken(token) {
     console.log(token.id);
-    await axios
+     axios
       .post("http://localhost:8080/payment",  {
         
       
@@ -245,8 +245,18 @@ const Bookhotelpage = () => {
       }
       }
       )
-      .then(() => {
+      .then((res) => {
+        
+        console.log(res)
         alert("Payment Success");
+        if(res.status===200)
+        {
+          submitcheckout();
+        }
+        else{
+          alert("Booking failed")
+        }
+        
       })
       .catch((error) => {
         alert(error);
@@ -292,8 +302,8 @@ const Bookhotelpage = () => {
     <hr />
     <hr />
         <div className="Bookselectionform">
-          
-          <form onSubmit={submitcheckout}>
+        {/* onSubmit={submitcheckout} */}
+          <form >
             <table>
               <tr>
                 <td>Number of Rooms</td>
@@ -344,19 +354,28 @@ const Bookhotelpage = () => {
         <h4 style={{color:"green"}} onLoad={setamt}>₹ {amount}</h4>
 
         
-          <button style={{color:"white", backgroundColor:"black", padding:"5px", borderRadius:"20px"}} onClick={handlecheckout} >checkout</button>
-         
-          </form>
+          {/* <button style={{color:"white", backgroundColor:"black", padding:"5px", borderRadius:"20px"}} onClick={handlecheckout} >checkout</button> */}
+         <br />
 
-          <StripeCheckout
+
+      <StripeCheckout
           amount={amount*100}
           
         token={handleToken}
         stripeKey="pk_test_51NihodSEh35AhV87k4mArqvTT5nnkkb353JjYJmNfjlbGQStgA2HPTYFdYlMmpV3Hch8ecyV6dTHyDq0Gh6VGzps00NWgsRCDw"
         currency="INR"
-      />
-        </div>
+      >
+        <button type="submit" style={{color:"white", backgroundColor:"black", padding:"5px", borderRadius:"20px"}} onClick={(e)=>{e.preventDefault()}}> CheckOut </button>
+      </StripeCheckout>
+        
+        
+          </form>
 
+          
+
+        </div>
+       
+ 
        <h5>Number of days : {noofdays}</h5>
         
        
