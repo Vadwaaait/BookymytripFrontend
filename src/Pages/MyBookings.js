@@ -73,7 +73,7 @@ const MyBookings = () => {
                                 pdf.text(`No of Rooms Booked : ${bookings[i].noroomsbooked}`,20,80)
                                 pdf.text(`Booked By : ${bookings[i].userE.userName}`,20,90)
                                 pdf.text("---------------------------------------------------------------------------------------",20,100)
-                                pdf.text(`Total Amount Paid :  Rs.${bookings[i].amountPaid} `,20,110)
+                                pdf.text(`Total Amount Paid :  Rs.${bookings[i].amountPaid}/-`,20,110)
                                 pdf.text("---------------------------------------------------------------------------------------",20,120)
                                 pdf.save("bookmytrip.pdf")
 

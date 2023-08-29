@@ -5,7 +5,7 @@ import "../Components/Styles/bookingcard.css"
 import "../Components/Styles/Bookselectionform.css"
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-
+import StripeCheckout from "react-stripe-checkout";
 const Bookhotelpage = () => {
 
   //cookies
@@ -224,6 +224,36 @@ const Bookhotelpage = () => {
   }
 
 
+  // stripe api -------------------------------------------------------------------
+
+  async function handleToken(token) {
+    console.log(token.id);
+    await axios
+      .post("http://localhost:8080/payment",  {
+        
+      
+        amount:amount,
+        token:token.id
+      
+       
+        
+      },
+      {
+        auth :{
+          username:"pogo@pogo.com",
+          password:"pogo"
+      }
+      }
+      )
+      .then(() => {
+        alert("Payment Success");
+      })
+      .catch((error) => {
+        alert(error);
+      });
+  }
+
+
   return (
     <>
 
@@ -315,10 +345,16 @@ const Bookhotelpage = () => {
 
         
           <button style={{color:"white", backgroundColor:"black", padding:"5px", borderRadius:"20px"}} onClick={handlecheckout} >checkout</button>
-
+         
           </form>
 
-            
+          <StripeCheckout
+          amount={amount*100}
+          
+        token={handleToken}
+        stripeKey="pk_test_51NihodSEh35AhV87k4mArqvTT5nnkkb353JjYJmNfjlbGQStgA2HPTYFdYlMmpV3Hch8ecyV6dTHyDq0Gh6VGzps00NWgsRCDw"
+        currency="INR"
+      />
         </div>
 
        <h5>Number of days : {noofdays}</h5>
