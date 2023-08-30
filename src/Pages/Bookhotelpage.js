@@ -240,8 +240,8 @@ const Bookhotelpage = () => {
       },
       {
         auth :{
-          username:"pogo@pogo.com",
-          password:"pogo"
+          username:username,
+          password:password
       }
       }
       )
@@ -364,6 +364,7 @@ const Bookhotelpage = () => {
         token={handleToken}
         stripeKey="pk_test_51NihodSEh35AhV87k4mArqvTT5nnkkb353JjYJmNfjlbGQStgA2HPTYFdYlMmpV3Hch8ecyV6dTHyDq0Gh6VGzps00NWgsRCDw"
         currency="INR"
+        name="BookMyTrip"
       >
         <button type="submit" style={{color:"white", backgroundColor:"black", padding:"5px", borderRadius:"20px"}} onClick={(e)=>{e.preventDefault()}}> CheckOut </button>
       </StripeCheckout>

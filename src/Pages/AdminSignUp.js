@@ -10,37 +10,37 @@ const AdminSignUp = () => {
         const[apass,setapass]=useState("");
 
 
-        const handleAdminreg=()=>{
+        const handleAdminreg=(e)=>{
 
 
-            
-            axios.post("http://localhost:8080/api/admin/save",{
+            e.preventDefault();
 
-            adminName:aname,
-            adminEmail:Amail,
-            adminPassword:apass
-  },
-  {headers: {
-    "Access-Control-Allow-Origin": "*",
-    "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS"
-  },
-      auth: {
-    username: 'pogo1@pogo.com',
-     password: 'pogo' 
-}}).then((res)=>{
+          axios.post("http://localhost:8080/api/admin/save",{
 
-    console.log(res)
-
-    if(res.status===200 && res.data != "Some error has occured")
-    {
-      alert("Admin added successfully")
-    }
-    else{
-
-      alert("Error occured, Email should be unique")
-    }
-    
-  })
+          userName:aname,
+          userEmail:Amail,
+          userPassword:apass
+          },
+          {headers: {
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS"
+          },
+              auth: {
+            // username: 'pogo@pogo.com',
+            //  password: 'pogo' 
+        }}).then((response)=>{
+        
+            console.log(response)
+        
+            if(response.status===200 && response.data != "Some error has occured")
+            {
+              alert("user added successfully")
+            }
+            else{
+        
+              alert("Error occured, Email should be unique")
+            }
+          })
 
         }
 

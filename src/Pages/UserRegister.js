@@ -38,8 +38,8 @@ const handleregister =(e) =>{
     "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS"
   },
       auth: {
-    username: 'pogo1@pogo.com',
-     password: 'pogo' 
+    // username: 'pogo1@pogo.com',
+    //  password: 'pogo' 
 }}).then((response)=>{
 
     console.log(response)
