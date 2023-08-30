@@ -15,10 +15,22 @@ const AdminNav = () => {
     const handlelogout=(e)=>{
             e.preventDefault()
 
-            Cookies.set("username","");
-            Cookies.set("password","");
+            if(window.confirm("Are you sure you want to logout ?")===true)
+                {
+                    Cookies.set("username","");
+                    Cookies.set("password","");
+                    Cookies.set("myname","")
+                    Cookies.set("myid","")
+                    alert("Thanks for visiting !.......You have been logged out !")
+                    navigate("/")
+                }
+            else
+            {
+                alert("You are still logged in.")
+            }
+         
         
-        navigate("/")
+        
 
 
     }
@@ -46,7 +58,7 @@ const AdminNav = () => {
           </div>
 
           <div className='loginnav'>
-          <Link to="/adminhome">ADD Hotels</Link>
+          <Link to="/adminaddhotel">ADD Hotels</Link>
           </div>
 
 

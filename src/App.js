@@ -17,6 +17,7 @@ import MyBookings from './Pages/MyBookings';
 import AdminHome from './Pages/AdminHome';
 import AdminAllHotels from './Pages/AdminAllHotels';
 import EditHotelDetails from './Pages/EditHotelDetails';
+import AdminAddHotel from './Pages/AdminAddHotel';
 
 function App() {
   return (
@@ -39,11 +40,12 @@ function App() {
          <Route path='/bynamesearch' element={<BynameSearch/>} /> 
 
          <Route path='/HotelCitySearch' element={<HotelCitySearch/>} />
-
+         
          
          <Route path='/adminhome' element={<AdminHome/>} />
          <Route path='/adminallhotels' element={<AdminAllHotels/>} />
          <Route path='/edithoteldetails' element={<EditHotelDetails/>} />
+         <Route path='/adminaddhotel' element={<AdminAddHotel/>} />
       </Routes>
 
 

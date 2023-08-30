@@ -66,7 +66,7 @@ const EditHotelDetails = () => {
             fetchdata();
             
 
-                console.log(hotelId)
+               
 
         },[])
 
@@ -102,13 +102,44 @@ const EditHotelDetails = () => {
 
         }
 
+
+
+
+        const handleDelete=(e)=>{
+
+            e.preventDefault()
+
+            if(window.confirm(` 🗑️ Are you sure you want to delete the hotel ?`)===true)
+            {
+                axios.delete("http://localhost:8080/api/admin/deletehotel/"+hotelId, {
+                    headers: {
+                  "Access-Control-Allow-Origin": "*",
+                  "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS"
+                },
+                    auth: {
+                   username: username,
+                    password: password 
+              }}).then((response)=>{
+              
+                  console.log(response)
+                    alert("Hotel Deleted !")
+                  
+                }).catch(e=>{
+                    alert("Error Occured")
+                })
+ 
+
+            }
+
+        }
+
   return (
     <>
     <AdminNav/>
     <div className="deschotel">
-                <div style={{marginLeft:"500px"}}>      
+                   
                     <form>
-                      <table>
+                      <table style={{marginLeft:"485px"}}>
             <tr>
                 <td>
                 Hotel Name
@@ -140,21 +171,28 @@ const EditHotelDetails = () => {
                 <td> <input type="text" placeholder={hotelinfoo.noOfRooms} onChange={(e)=>{sethorooms(e.target.value)}}/></td>
             </tr>
 
-            <tr>
-                <td>
-
-                </td>
-                <td>
-                    <button onClick={handleedit}>Save changes</button>
-                </td>
-                <td>
-
-                </td>
-            </tr>
+          
+                   
+            
         </table>
-        </form>
-        </div>
+            
+        <br />
 
+
+        <button  style={{padding:"5px", borderRadius:"5px", color:"white", backgroundColor:"black"}}    onClick={handleedit}>Save changes</button>
+
+
+             <br />
+
+
+          <hr />
+          <hr />
+
+          <br />
+          <br />    
+        </form>
+      
+        <button  style={{padding:"5px", borderRadius:"5px", color:"white", backgroundColor:"red"}}    onClick={handleDelete}>Delete Hotel</button>
 
     </div>
       
