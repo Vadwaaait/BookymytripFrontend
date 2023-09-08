@@ -15,6 +15,9 @@ const Bookhotelpage = () => {
   const myid=Cookies.get("myid")
 
 
+  const[discount,setdiscount]=useState(0)
+
+
   //----------------------------------------------------------
 
 
@@ -49,8 +52,30 @@ const Bookhotelpage = () => {
       
       useEffect(()=>{
         fetchdata();
+
+        axios.post("http://localhost:8080/api/user/bookDiscount",{
+
+                      
+        userId:myid
+        },
+        {headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS"
+        },
+            auth: {
+              username:username,
+              password:password
+      }}).then((response)=>{
         
-                 let pric=hotelinfoo.hotelPrice
+        setdiscount(response.data)
+
+
+      }).catch(e=>alert(e))
+
+
+
+                  
+                 let pric=hotelinfoo.hotelPrice - (discount/100)
                  setamount(pric)
                  setnoofrooms(1)
 
@@ -86,16 +111,61 @@ const Bookhotelpage = () => {
           setamount(event.target.value*pric)
       }
 
+      const[noofbook,setnoofbook]=useState(0);
+
+      const handlegetBookings=()=>{
+
+
+        axios.post("http://localhost:8080/api/user/ondate",{
+
+        hotelid:hotelinfor ,
+	      fromDate:mindate
+  
+        }
+        ,{headers: {
+  
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS"
+        
+        },
+            auth: {
+          username: username,
+           password: password 
+    }})
+    .then((res)=>{
+  
+          console.log(res.data.length)
+          if(res.status==200)
+          {
+            setnoofbook(res.data.length)
+          }
+          else
+          {
+            alert("Error ")
+          }
+  
+        }).catch(e=>{console.log(e)})
+
+      }
+
+
+      useEffect(()=>{
+        handlegetBookings();
+        
+      },[fromdate])
+
       
       const handlefromdate=(event)=>{
 
         setfromdate(event.target.value)
         
         var mind=new Date(fromdate);
-        mind.setDate(mind.getDate()+1)
+        mind.setDate(mind.getDate())
        
         setmindate(mind)
 
+
+       
         
       } 
 
@@ -125,14 +195,22 @@ const Bookhotelpage = () => {
       // console.log(fromdate +"ignore")
       // console.log(todate +"ignore")
      
-
+      
       console.log("asfassfdsdf"+ mindate)
+      
       setnoofdays(differenceInDays)
      },[fromdate,todate,mindate])
 
 
 
      useEffect(()=>{
+
+
+
+                         
+
+                 
+
       
       var Date1= new Date();
       Date1.setDate(Date1.getDate()+1)
@@ -141,14 +219,14 @@ const Bookhotelpage = () => {
       setnoofdays(1)
       setnoofrooms(1)
       setnoofpeople(1)
-      setamount(hotelinfoo.hotelPrice)
+      setamount(hotelinfoo.hotelPrice )
 
      },[])
 
 
 
      const handleclickcheck=(event)=>{
-      setamount(pric*noofdays*noofrooms);
+      setamount((pric*noofdays*noofrooms)-(pric*(discount/100)));
 
       
 
@@ -357,6 +435,8 @@ const Bookhotelpage = () => {
           {/* <button style={{color:"white", backgroundColor:"black", padding:"5px", borderRadius:"20px"}} onClick={handlecheckout} >checkout</button> */}
          <br />
 
+        
+    <hr />
 
       <StripeCheckout
           amount={amount*100}
@@ -369,6 +449,8 @@ const Bookhotelpage = () => {
         <button type="submit" style={{color:"white", backgroundColor:"black", padding:"5px", borderRadius:"20px"}} onClick={(e)=>{e.preventDefault()}}> CheckOut </button>
       </StripeCheckout>
         
+
+
         
           </form>
 
@@ -379,7 +461,7 @@ const Bookhotelpage = () => {
  
        <h5>Number of days : {noofdays}</h5>
         
-       
+       <h4>No of Rooms available on selected day : {hotelinfoo.noOfRooms-noofbook } </h4>
 
     </div>
 

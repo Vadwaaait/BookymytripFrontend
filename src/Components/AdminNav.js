@@ -64,7 +64,7 @@ const AdminNav = () => {
 
     
       <div className='loginnav'>
-          <Link to="/adminhome">All Bookings</Link>
+          <Link to="/adminallbookings">All Bookings</Link>
           </div>
          <div className='loginnav'>
           <Link to="/adminallhotels">All Hotels</Link>

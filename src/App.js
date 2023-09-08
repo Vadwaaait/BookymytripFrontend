@@ -18,7 +18,7 @@ import AdminHome from './Pages/AdminHome';
 import AdminAllHotels from './Pages/AdminAllHotels';
 import EditHotelDetails from './Pages/EditHotelDetails';
 import AdminAddHotel from './Pages/AdminAddHotel';
-
+import AdminAllBookings from "./Pages/AdminAllBookings"
 function App() {
   return (
 <>
@@ -40,8 +40,8 @@ function App() {
          <Route path='/bynamesearch' element={<BynameSearch/>} /> 
 
          <Route path='/HotelCitySearch' element={<HotelCitySearch/>} />
-         
-         
+        
+         <Route path='/adminallbookings' element={<AdminAllBookings/>} />
          <Route path='/adminhome' element={<AdminHome/>} />
          <Route path='/adminallhotels' element={<AdminAllHotels/>} />
          <Route path='/edithoteldetails' element={<EditHotelDetails/>} />
