@@ -43,8 +43,41 @@ const Hoteldetails = () => {
    
  }
 
+ var base64image
+ 
+
+ const[image,setimage]=useState("");
+
+ const getimg=()=>{
+
+
+  axios.get("http://localhost:8080/api/admin/getImage/"+hotelid,
+  {headers: {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS"
+  },
+      auth: {
+      username: username,
+      password: password
+  }}).then((response)=>{
+
+  console.log( response)
+  
+
+      console.log()
+     
+      setimage(response.data)
+
+
+
+  base64image = `data:image/jpeg;base64,${response.data}`;
+
+      }).catch(e=>{})
+ }
+
   useEffect(()=>{
     fetchdata();
+    getimg();
   },[])
 
   const navigate=useNavigate();
@@ -77,6 +110,14 @@ const Hoteldetails = () => {
      <UserNav /> 
 
         <div className="deschotel">
+            <br />
+            <br />
+       
+          <img style={{width:"50%", borderRadius:"20px"}} src={`data:image/jpeg;base64,${image}`} alt="Image" />
+          <br />
+          <br />
+      
+        <hr />
             <h2>Name : {hotelinfoo.hotelName}</h2>
             <h4>city : {hotelinfoo.hotelCity}</h4>
             <h4>HOTEL Address : {hotelinfoo.hotelAddress}</h4>

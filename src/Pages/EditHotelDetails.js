@@ -133,6 +133,36 @@ const EditHotelDetails = () => {
 
         }
 
+        const handleupload=(e)=>{
+
+            const file=e.target.files[0];
+           
+            const formData = new FormData();
+            formData.append("file", file);
+            formData.append("hotid",hotelId)
+
+            axios
+            .post("http://localhost:8080/api/admin/uploadimg", formData, {
+              headers: {
+                "Content-Type": "multipart/form-data",
+                
+              },
+              auth:{
+                username:username,
+                password:password
+              }
+            })
+            .then((response) => {
+              
+             alert(response.data)
+            })
+            .catch((error) => {
+          
+              console.log(error);
+            });
+
+        }
+
   return (
     <>
     <AdminNav/>
@@ -186,8 +216,11 @@ const EditHotelDetails = () => {
 
 
           <hr />
+          <h4>Upload Hotel Image Here</h4>
+          <input type="file" onChange={handleupload}/>
+          {/* <button  style={{padding:"5px", borderRadius:"5px", color:"white", backgroundColor:"green"}}    onClick={handleupload}>Upload Hotel image</button> */}
           <hr />
-
+          
           <br />
           <br />    
         </form>

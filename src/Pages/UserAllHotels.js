@@ -28,7 +28,10 @@ const UserAllHotels = () => {
     let authString = `${username}:${password}`
     headers.set('Authorization', 'Basic ' + btoa(authString))
 
-   
+    var base64image
+    
+
+    const[image,setimage]=useState("");
 
     const navigate=useNavigate();
 
@@ -105,6 +108,14 @@ const UserAllHotels = () => {
             }
 
 
+
+
+
+            
+
+
+
+
             fetchdata();
         },[])
 
@@ -132,6 +143,40 @@ const UserAllHotels = () => {
         <ul style={{listStyleType:"none"}}>
             {
                 hotelinfo.map((item,i)=>{
+
+
+                  
+
+                            
+                            //     axios.get("http://localhost:8080/api/admin/getImage/2",
+                            // {headers: {
+                            //     "Access-Control-Allow-Origin": "*",
+                            //     "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS"
+                            // },
+                            //     auth: {
+                            //     username: 'adwait@root.com',
+                            //     password: '1234'
+                            // }}).then((response)=>{
+
+                            // console.log( response)
+                            
+
+                            //     console.log()
+                            
+                            //     setimage(response.data)
+
+
+
+                            // base64image = `data:image/jpeg;base64,${response.data}`;
+
+                            //     })
+                            
+
+                    
+
+                                
+
+
                     return (
                         <div className='hotelcard'>
                     <li key={i} >
